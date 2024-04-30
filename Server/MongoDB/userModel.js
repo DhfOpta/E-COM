@@ -57,7 +57,7 @@ dataSchemaUser.methods.getTokenJWT = async function () {
             //Signature
             , process.env.JWT_TKEY,
             //
-            { expiresIn: '1d' })
+            { expiresIn: '.5d' })
     } catch (error) {
         console.error(error);
     }

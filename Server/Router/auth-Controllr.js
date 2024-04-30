@@ -4,6 +4,8 @@ const Datauser = require('../MongoDB/userModel')
 const bcrypt = require('bcrypt')
 const validator = require('validator');
 const ContectFormSchema = require('../MongoDB/ContectFormSchema');
+// const buyData = require('../MongoDB/BuySchema');
+const BuySchema = require('../MongoDB/BuySchema');
 const home = async (req, res) => {
     try {
         res.status(200).send('Home router controler:)')
@@ -287,6 +289,23 @@ const chatAllChatUser=async(req,res)=>{
 res.json({msg:chatGt})
 // console.log(chatGt,'cg..');
 }
+const BuyData=async(req,res)=>{
+    console.log(req.body,"kkk");
+   
+const {UserName,UserId,date,ProductTitle,Pprice,Pquntt,Address,City,State,ZipCode,CardName,CardNumbr,Expmnth,Expyear,cvv}=req.body;
+if(Address==undefined||City==undefined||State==undefined||ZipCode==undefined||CardName==undefined||CardNumbr==undefined||Expmnth==undefined||Expyear==undefined||cvv==undefined){
+    res.status(400).json({ msg: 'Please fill all the data ' })
+    console.log('nononono');
+
+}else{
+    const data=await BuySchema.create({UserName,UserId,date,ProductTitle,Pprice,Pquntt,Address,City,State,ZipCode,CardName,CardNumbr,Expmnth,Expyear,cvv});
+    res.status(200).json({ msg: 'Payment Successful ' })
+    console.log(data,'dadatta');
+}
+   
+
+
+}
 // const cartQunt = async (req, res) => {
 //     try {
 //         let { title, brand, price, Qunt, img, user_id, description, prodct_id, QunIncmnt } = req.body
@@ -311,4 +330,4 @@ res.json({msg:chatGt})
 //         console.log(error);
 //     }
 // }
-module.exports = { home, about, login, user, userAdmin, cart, cartgt, cartDelet, cartQunt, cartGetAll,chat,chatA,chatAllChatAdmin,chatAllChatUser, qrCard } 
+module.exports = { home, about, login, user, userAdmin, cart, cartgt, cartDelet, cartQunt, cartGetAll,chat,chatA,chatAllChatAdmin,chatAllChatUser,BuyData, qrCard } 

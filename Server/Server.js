@@ -21,12 +21,12 @@ const corsOptions = {
   credentials: true
 }
 app.use(cors(corsOptions))
-app.use(express.static(path.join(__dirname,'./client/dist')))
-console.log(__dirname,'./client/dist' ,'kjhgf');
+// app.use(express.static(path.join(__dirname,'./client/dist')))
+// console.log(__dirname,'.,/client/dist' ,'kjhgf');
 app.use(express.json());
-app.use('*',(req,res)=>{
-  res.sendFile(path.join(__dirname,'./client/dist/index.html'))
-})
+// app.use('*',(req,res)=>{
+//   res.sendFile(path.join(__dirname,'./client/dist/index.html'))
+// })
 
 
 app.use('/', routr)

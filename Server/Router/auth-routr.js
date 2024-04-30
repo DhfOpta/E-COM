@@ -1,5 +1,5 @@
 const express=require('express');
-const {home,about,login,user,userAdmin,cart,cartgt,cartDelet,cartQunt,cartGetAll,chat,chatA,chatAllChatAdmin,chatAllChatUser,qrCard} = require('./auth-Controllr');
+const {home,about,login,user,userAdmin,cart,cartgt,cartDelet,cartQunt,cartGetAll,chat,chatA,chatAllChatAdmin,chatAllChatUser,BuyData,qrCard} = require('./auth-Controllr');
 const validate = require('../zodValidatr/validtr');
 const {signUpSchema,loginSchema} = require('../Validator/auth-validatorzod');
 const {dataValidt,dataAuthValidt} = require('../newMiddleWqareForJWT Verify');
@@ -22,6 +22,7 @@ routr.route('/cahtbyUser/:id').get(chatAllChatAdmin);
 routr.route('/cahtbyUser/').get(chatAllChatUser);
 
 routr.route('/cahtbyUser/:id').get(chatA);
+routr.route('/BuyData').post(BuyData);
 
 // validate(loginSchema),
 routr.route('/qrCard').get(qrCard);
